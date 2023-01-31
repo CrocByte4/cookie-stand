@@ -1,3 +1,7 @@
+function randomNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 const hours = [
   "6am",
   "7am",
@@ -15,26 +19,72 @@ const hours = [
   "7pm",
 ];
 
-const liverpool = {
-  name: "Liverpool",
-  minCust: 23,
-  maxCust: 65,
-  avgSales: 6.3,
-  custPerHour: [],
-  getCustPerHour: function () {
-    for (let i = 0; i < hours.length; i++) {
-      let numbCust = randomNum(this.minCust, this.maxCust);
-      this.custPerHour.push(numbCust);
-    }
-  },
-};
-
-function randomNum(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+//creating Shop constructor
+function Shop(name, minCust, maxCust, avgSales) {
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgSales = avgSales;
+  this.custPerHr = this.genCustPerHr();
+  this.cookPerHr = this.genCookPerHr();
 }
 
-liverpool.getCustPerHour();
-console.log(liverpool);
+Shop.prototype.genCustPerHr = function () {
+  return randomNum(this.minCust, this.maxCust) + " customers/hr";
+};
+Shop.prototype.genCookPerHr = function () {
+  return this.avgSales * this.custPerHr + " cookies/hr";
+};
+
+Shop.prototype.render = function () {
+  // get the "container" for shop data
+  const containerEl = document.getElementById("shopData");
+
+  //adding a table
+  const tableEl = document.createElement("table");
+  article.appendChild(tableEl);
+
+  //add header row
+  const headerRow = document.createElement("hedrow");
+};
+
+const seattle = new Shop(
+  "Seattle",
+  [23, 65, 6.3],
+  this.custPerHr,
+  this.cookPerHr
+);
+
+//class 06 version
+//const seattle = {
+//  name: "Seattle",
+//  minCust: 23,
+//  maxCust: 65,
+//  avgSales: 6.3,
+//  custPerHr: [],
+//  cookPerHr: [],
+//  calcCustPerHr: function () {
+//    for (let i = 0; i < hours.length; i++) {
+//      let numbCust = randomNum(this.minCust, this.maxCust);
+//      this.custPerHr.push(numbCust);
+//    }
+//    this.calcCookPerHr();
+// },
+//  calcCookPerHr: function () {
+//    for (let i = 0; i < this.custPerHour.length; i++) {
+//      this.calcCookPerHr.push(Math.floor(this.custPerHr[i] * 6.3));
+//    }
+//  },
+// render: function () {
+//    this.calcCustPerHr();
+//    this.calcCookPerHr();
+//
+//   const div = document.getElementById(this.name);
+// },
+//};
+
+//seattle.calcCustPerHr();
+//console.log(seattle);
 
 //The business needs a proof of concept application to calculate the number of cookies each location must make every day so that it can manage its supplies inventory and production schedule. The number of products to make depends on the hours of operation (6:00 AM to 8:00 PM for all locations) and a few factors unique to each location:
 

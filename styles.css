@@ -1,9 +1,10 @@
 body {
-  background-color: plum 90%;
+  background-color: plum;
   font-style: normal;
   font-family: monospace;
 }
 
 p {
   color: black;
+  font-family: monospace;
 }
