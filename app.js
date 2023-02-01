@@ -25,35 +25,89 @@ function Shop(name, minCust, maxCust, avgSales) {
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgSales = avgSales;
-  this.custPerHr = this.genCustPerHr();
-  this.cookPerHr = this.genCookPerHr();
+  this.custPerHr = [];
+  this.cookPerHr = [];
 }
 
 Shop.prototype.genCustPerHr = function () {
-  return randomNum(this.minCust, this.maxCust) + " customers/hr";
+  for (let i = 0; i < hours.length; i++) {
+    let numbCust = randomNum(this.minCust, this.maxCust);
+    this.custPerHr.push(numbCust);
+  }
 };
+
 Shop.prototype.genCookPerHr = function () {
-  return this.avgSales * this.custPerHr + " cookies/hr";
+  for (let i = 0; i < this.custPerHr.length; i++) {
+    let cookSold = Math.floor(this.custPerHr[i] * this.avgSales);
+    this.cookPerHr.push(cookSold);
+  }
 };
 
 Shop.prototype.render = function () {
-  // get the "container" for shop data
-  const containerEl = document.getElementById("shopData");
+  this.genCustPerHr();
+  this.genCookPerHr();
+  //new table
+  const table = document.getElementById("salesTable");
 
-  //adding a table
-  const tableEl = document.createElement("table");
-  article.appendChild(tableEl);
+  //new table row
+  const tr = document.createElement("tr");
+  table.appendChild(tr);
 
-  //add header row
-  const headerRow = document.createElement("hedrow");
+  //new table cell/data
+  let td = document.createElement("td");
+  td.textContent = this.name;
+  tr.appendChild(td);
+
+  //inserting data into row
+  for (let i = 0; i < this.cookPerHr.length; i++) {
+    td = document.createElement("td");
+    td.textContent = this.cookPerHr[i];
+    tr.appendChild(td);
+  }
 };
 
-const seattle = new Shop(
-  "Seattle",
-  [23, 65, 6.3],
-  this.custPerHr,
-  this.cookPerHr
-);
+function makeHeaderRow() {
+  //table
+  const table = document.getElementById("salesTable");
+
+  //table row
+  const tr = document.createElement("tr");
+  table.appendChild(tr);
+
+  //starting cell
+  let th = document.createElement("th");
+  tr.appendChild(th);
+  //get data into the row
+  for (let i = 0; i < hours.length; i++) {
+    th = document.createElement("th");
+    th.textContent = hours[i];
+    tr.appendChild(th);
+  }
+}
+
+makeHeaderRow();
+
+const seattle = new Shop("Seattle", 23, 65, 6.3);
+const tokyo = new Shop("Tokyo", 3, 24, 1.2);
+const dubai = new Shop("Dubai", 11, 38, 3.7);
+const paris = new Shop("Paris", 20, 38, 2.3);
+const lima = new Shop("Lima", 2, 16, 4.6);
+seattle.render();
+tokyo.render();
+dubai.render();
+paris.render();
+lima.render();
+
+//OLD CODE
+// get the "container" for shop data
+//const containerEl = document.getElementById("shopData");
+
+//adding a table
+//const tableEl = document.createElement("table");
+// article.appendChild(tableEl);
+
+//add header row
+// const headerRow = document.createElement("hedrow");
 
 //class 06 version
 //const seattle = {
