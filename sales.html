@@ -10,7 +10,27 @@
   <body>
     <h1>Sales report Feb 2023</h1>
     Want to go back to the index? <a href="index.html">CLICK HERE</a> .
+    <form id="shop-sub-form">
+      <fieldset>
+        <legend>Please Enter Data For New Shop</legend>
+
+        <label for="name-input">Name Of Shop</label>
+        <input name="name" id="name-input" type="text" />
+
+        <label for="min-cust-input">Min No# Customers</label>
+        <input name="minCust" id="min-cust-input" type="text" />
+
+        <label for="max-cust-input">Max No# Customers</label>
+        <input name="maxCust" id="max-cust-input" type="text" />
+
+        <label for="avg-sales-input">Average sales</label>
+        <input name="avgSales" id="avg-sales-input" type="text" />
+
+        <button id="submit-button" type="submit">SUBMIT</button>
+      </fieldset>
+    </form>
     <table id="salesTable"></table>
+
     <script src="app.js"></script>
   </body>
 </html>

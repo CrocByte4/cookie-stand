@@ -98,6 +98,41 @@ dubai.render();
 paris.render();
 lima.render();
 
+const submitButton = document.getElementById("submit-button");
+
+submitButton.addEventListener("mouseover", function () {
+  submitButton.classList.toggle("pinkHili");
+});
+submitButton.addEventListener("click", function () {
+  submitButton.classList.toggle("greenSub");
+});
+const form = document.getElementById("shop-sub-form");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const shopNameInput = event.target.name.value;
+  const minCustInput = event.target.minCust.value;
+  const maxCustInput = event.target.maxCust.value;
+  const avgSalesInput = event.target.avgSales.value;
+
+  console.log(shopNameInput);
+  console.log(minCustInput);
+  console.log(maxCustInput);
+  console.log(avgSalesInput);
+
+  form.reset();
+
+  const newShop = new Shop(
+    shopNameInput,
+    minCustInput,
+    maxCustInput,
+    avgSalesInput
+  );
+
+  newShop.render();
+});
+
 //OLD CODE
 // get the "container" for shop data
 //const containerEl = document.getElementById("shopData");

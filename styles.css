@@ -15,3 +15,23 @@ th {
   padding: 0.5rem;
   font-weight: bolder;
 }
+
+.pinkHili {
+  background-color: hotpink;
+  color: crimson;
+}
+.greenSub {
+  background-color: greenyellow;
+  color: green;
+}
+form {
+  display: flex;
+  flex: auto;
+  justify-content: center;
+  width: 33%;
+  margin: 1.5rem;
+}
+fieldset {
+  display: flex;
+  flex-direction: column;
+}
