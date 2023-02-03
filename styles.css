@@ -16,7 +16,7 @@ th {
   font-weight: bolder;
 }
 
-.pinkHili {
+.pinkHili:hover {
   background-color: hotpink;
   color: crimson;
 }

@@ -101,7 +101,7 @@ lima.render();
 const submitButton = document.getElementById("submit-button");
 
 submitButton.addEventListener("mouseover", function () {
-  submitButton.classList.toggle("pinkHili");
+  submitButton.classList.add("pinkHili");
 });
 submitButton.addEventListener("click", function () {
   submitButton.classList.toggle("greenSub");
@@ -132,6 +132,7 @@ form.addEventListener("submit", function (event) {
 
   newShop.render();
 });
+function makeFooterRow() {}
 
 //OLD CODE
 // get the "container" for shop data
