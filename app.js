@@ -58,12 +58,20 @@ Shop.prototype.render = function () {
   td.textContent = this.name;
   tr.appendChild(td);
 
+  let total = 0;
+
   //inserting data into row
   for (let i = 0; i < this.cookPerHr.length; i++) {
     td = document.createElement("td");
     td.textContent = this.cookPerHr[i];
     tr.appendChild(td);
+
+    total = total + this.cookPerHr[i];
   }
+  //adding total cell
+  td = document.createElement("td");
+  td.textContent = total;
+  tr.appendChild(td);
 };
 
 function makeHeaderRow() {
@@ -141,7 +149,8 @@ form.addEventListener("submit", function (event) {
   newShop.render();
 });
 
-function makeFooterRow() {
+//attempt at total sales per hour row
+/* function makeFooterRow() {
   const table = document.getElementById("salesTable");
   const tr = document.createElement("tr");
   table.appendChild(tr);
@@ -155,8 +164,8 @@ function makeFooterRow() {
     tr.appendChild(th);
   }
 }
-
-makeFooterRow();
+ */
+//makeFooterRow();
 //OLD CODE
 // get the "container" for shop data
 //const containerEl = document.getElementById("shopData");
