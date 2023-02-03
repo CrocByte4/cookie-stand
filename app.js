@@ -92,11 +92,19 @@ const tokyo = new Shop("Tokyo", 3, 24, 1.2);
 const dubai = new Shop("Dubai", 11, 38, 3.7);
 const paris = new Shop("Paris", 20, 38, 2.3);
 const lima = new Shop("Lima", 2, 16, 4.6);
-seattle.render();
-tokyo.render();
-dubai.render();
-paris.render();
-lima.render();
+
+const shops = [seattle, tokyo, dubai, paris, lima];
+
+for (let i = 0; i < shops.length; i++) {
+  shops[i].render();
+}
+
+//the above replaces renders below
+//seattle.render();
+//tokyo.render();
+//dubai.render();
+//paris.render();
+//lima.render();
 
 const submitButton = document.getElementById("submit-button");
 
@@ -132,8 +140,23 @@ form.addEventListener("submit", function (event) {
 
   newShop.render();
 });
-function makeFooterRow() {}
 
+function makeFooterRow() {
+  const table = document.getElementById("salesTable");
+  const tr = document.createElement("tr");
+  table.appendChild(tr);
+  //starting cell
+  let th = document.createElement("th");
+  tr.appendChild(th);
+  //get data into the row
+  for (let i = 0; i < hours.length; i++) {
+    th = document.createElement("th");
+    th.textContent = "Total sales";
+    tr.appendChild(th);
+  }
+}
+
+makeFooterRow();
 //OLD CODE
 // get the "container" for shop data
 //const containerEl = document.getElementById("shopData");
